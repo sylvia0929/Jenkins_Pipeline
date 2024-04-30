@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                // Build code using Maven
+                sh 'mvn clean package'
+            }
+        }
+        stage('Unit and Integration Tests') {
+            steps {
+                // Run unit tests using JUnit
+                sh 'mvn test'
+                // Run integration tests using Selenium
+                // (Integration test scripts and setup not provided)
+            }
+        }
+        stage('Code Analysis') {
+            steps {
+                // Integrate code analysis using SonarQube
+                // (SonarQube setup and configuration not provided)
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                // Perform security scan using OWASP ZAP
+                // (OWASP ZAP setup and configuration not provided)
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                // Deploy application to staging server using Ansible
+                // (Ansible playbook not provided)
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps {
+                // Run integration tests on staging environment
+                // (Integration test scripts and setup not provided)
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                // Deploy application to production server using Ansible
+                // (Ansible playbook not provided)
+            }
+        }
+    }
+}
