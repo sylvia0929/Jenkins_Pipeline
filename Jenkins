@@ -38,13 +38,13 @@ pipeline {
                 success {
                     emailext body: "Security scan succeeded. No vulnerabilities found.",
                             subject: "Security Scan - Success",
-                            to: "your_email@example.com",
+                            to: "ts0929sylvia@gmail.com",
                             attachLog: true
                 }
                 failure {
                     emailext body: "Security scan failed. Vulnerabilities detected.",
                             subject: "Security Scan - Failure",
-                            to: "your_email@example.com",
+                            to: "ts0929sylvia@gmail.com",
                             attachLog: true
                 }
             }
