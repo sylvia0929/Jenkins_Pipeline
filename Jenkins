@@ -1,0 +1,100 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the code using Maven'
+                // Build code using Maven
+                // sh 'mvn clean package'
+            }
+        }
+        stage('Unit and Integration Tests') {
+            steps {
+                echo 'Running unit tests using JUnit'
+                // Run unit tests using JUnit
+                // sh 'mvn test'
+                
+                echo 'Running integration tests using Selenium'
+                // Run integration tests using Selenium
+                // (Example: Running Selenium tests using ChromeDriver)
+                // sh 'chromedriver --version'
+                // Additional integration test steps...
+            }
+            post {
+                success {
+                    emailext body: "Unit and Integration Tests completed successfully.",
+                            subject: "Unit and Integration Tests - Success",
+                            to: "ts0929sylvia@gmail.com",
+                            attachLog: true
+                }
+                failure {
+                    emailext body: "Unit and Integration Tests failed.",
+                            subject: "Unit and Integration Tests - Failure",
+                            to: "ts0929sylvia@gmail.com",
+                            attachLog: true
+                }
+            }
+        }
+        stage('Code Analysis') {
+            steps {
+                echo 'Performing code analysis using SonarQube'
+                // Integrate code analysis using SonarQube
+                // (Example: Analyzing code using SonarQube scanner)
+                // sh 'sonar-scanner'
+                // Additional code analysis steps...
+            }
+        }
+        stage('Security Scan') {
+            steps {
+                echo 'Performing security scan using OWASP ZAP'
+                // Perform security scan using OWASP ZAP
+                // (Example: Running OWASP ZAP security scan)
+                // sh 'zap-cli --spider <URL>'
+                // sh 'zap-cli --quick-scan <URL>'
+                // Additional security scan steps...
+            }
+            post {
+                success {
+                    emailext body: "Security Scan succeeded. No vulnerabilities found.",
+                            subject: "Security Scan - Success",
+                            to: "ts0929sylvia@gmail.com",
+                            attachLog: true
+                }
+                failure {
+                    emailext body: "Security Scan failed. Vulnerabilities detected.",
+                            subject: "Security Scan - Failure",
+                            to: "ts0929sylvia@gmail.com",
+                            attachLog: true
+                }
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                echo 'Deploying application to staging server using Ansible'
+                // Deploy application to staging server using Ansible
+                // (Example: Running Ansible playbook for deployment)
+                // sh 'ansible-playbook deploy-staging.yml'
+                // Additional deployment steps...
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps {
+                echo 'Running integration tests on staging environment'
+                // Run integration tests on staging environment
+                // (Example: Running API tests against staging server)
+                // sh 'newman run collection.json -e staging.postman_environment.json'
+                // Additional integration test steps...
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo 'Deploying application to production server using Ansible'
+                // Deploy application to production server using Ansible
+                // (Example: Running Ansible playbook for production deployment)
+                // sh 'ansible-playbook deploy-production.yml'
+                // Additional deployment steps...
+            }
+        }
+    }
+}
