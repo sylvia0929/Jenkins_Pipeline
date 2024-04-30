@@ -13,37 +13,50 @@ pipeline {
                 // Run unit tests using JUnit
                 sh 'mvn test'
                 // Run integration tests using Selenium
-                // (Integration test scripts and setup not provided)
+                // (Example: Running Selenium tests using ChromeDriver)
+                sh 'chromedriver --version'
+                // Additional integration test steps...
             }
         }
         stage('Code Analysis') {
             steps {
                 // Integrate code analysis using SonarQube
-                // (SonarQube setup and configuration not provided)
+                // (Example: Analyzing code using SonarQube scanner)
+                sh 'sonar-scanner'
+                // Additional code analysis steps...
             }
         }
         stage('Security Scan') {
             steps {
                 // Perform security scan using OWASP ZAP
-                // (OWASP ZAP setup and configuration not provided)
+                // (Example: Running OWASP ZAP security scan)
+                sh 'zap-cli --spider <URL>'
+                sh 'zap-cli --quick-scan <URL>'
+                // Additional security scan steps...
             }
         }
         stage('Deploy to Staging') {
             steps {
                 // Deploy application to staging server using Ansible
-                // (Ansible playbook not provided)
+                // (Example: Running Ansible playbook for deployment)
+                sh 'ansible-playbook deploy-staging.yml'
+                // Additional deployment steps...
             }
         }
         stage('Integration Tests on Staging') {
             steps {
                 // Run integration tests on staging environment
-                // (Integration test scripts and setup not provided)
+                // (Example: Running API tests against staging server)
+                sh 'newman run collection.json -e staging.postman_environment.json'
+                // Additional integration test steps...
             }
         }
         stage('Deploy to Production') {
             steps {
                 // Deploy application to production server using Ansible
-                // (Ansible playbook not provided)
+                // (Example: Running Ansible playbook for production deployment)
+                sh 'ansible-playbook deploy-production.yml'
+                // Additional deployment steps...
             }
         }
     }
