@@ -23,15 +23,15 @@ pipeline {
             }
             post {
                 success {
-                    emailext body: "Unit and Integration Tests completed successfully.",
-                            subject: "Unit and Integration Tests - Success",
-                            to: "ts0929sylvia@gmail.com",
+                    mail to: "ts0929sylvia@gmail.com",
+                    subject: "Unit and Integration Tests - Success",
+                    body: "Unit and Integration Tests completed successfully.",
                             attachLog: true
                 }
                 failure {
-                    emailext body: "Unit and Integration Tests failed.",
-                            subject: "Unit and Integration Tests - Failure",
-                            to: "ts0929sylvia@gmail.com",
+                    mail to: "ts0929sylvia@gmail.com",
+                    subject: "Unit and Integration Tests - Failure",
+                    body: "Unit and Integration Tests failed.",
                             attachLog: true
                 }
             }
@@ -56,15 +56,17 @@ pipeline {
             }
             post {
                 success {
-                    emailext body: "Security Scan succeeded. No vulnerabilities found.",
-                            subject: "Security Scan - Success",
-                            to: "ts0929sylvia@gmail.com",
+                    success {
+                    mail to: "ts0929sylvia@gmail.com",
+                    subject: "Security Scan - Success",
+                    body: "Security Scan succeeded. No vulnerabilities found.",
                             attachLog: true
+
                 }
                 failure {
-                    emailext body: "Security Scan failed. Vulnerabilities detected.",
-                            subject: "Security Scan - Failure",
-                            to: "ts0929sylvia@gmail.com",
+                    mail to: "ts0929sylvia@gmail.com",
+                    subject: "Security Scan - Failure",
+                    body: "Security Scan failed. Vulnerabilities detected.",
                             attachLog: true
                 }
             }
