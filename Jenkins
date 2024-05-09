@@ -31,7 +31,8 @@ pipeline {
                         to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Success",
                         body: "Unit and Integration Tests completed successfully.",
-                        attachmentsPattern: '**/*.log')
+                        attachmentsPattern: '**/*.log'
+                    )
                 }
                 failure {
                     echo "Unit and Integration Tests - Failure"
@@ -39,7 +40,8 @@ pipeline {
                         to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Failure.",
                         body: "Unit and Integration Tests failed.",
-                        attachmentsPattern: '**/*.log')
+                        attachmentsPattern: '**/*.log'
+                    )
                 }
             }
         }
@@ -64,11 +66,12 @@ pipeline {
             post {
                 success {
                     echo "Security Scan - Success"
-                     emailext (
+                    emailext (
                         to: "ts0929sylvia@gmail.com",
                         subject: "Security Scan - Success",
                         body: "Security Scan succeeded. No vulnerabilities found.",
-                        attachmentsPattern: '**/*.log')
+                        attachmentsPattern: '**/*.log'
+                    )
                 }
                 failure {
                     echo "Security Scan - Failure"
@@ -76,7 +79,8 @@ pipeline {
                         to: "ts0929sylvia@gmail.com",
                         subject: "Security Scan - Failure",
                         body: "Security Scan failed. Vulnerabilities detected.",
-                        attachmentsPattern: '**/*.log')
+                        attachmentsPattern: '**/*.log'
+                    )
                 }
             }
         }
