@@ -27,7 +27,7 @@ pipeline {
             post {
                 success {
                     echo "Unit and Integration Tests - Success"
-                    emailtext (
+                    emailext (
                         attachLog: true,
                         to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Success",
@@ -37,7 +37,7 @@ pipeline {
                 }
                 failure {
                     echo "Unit and Integration Tests - Failure"
-                    emailtext (
+                    emailext (
                         attachLog: true,
                         to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Failure",
@@ -68,7 +68,7 @@ pipeline {
             post {
                 success {
                     echo "Security Scan - Success"
-                    emailtext (
+                    emailext (
                         attachLog: true,
                         to: "ts0929sylvia@gmail.com",
                         subject: "Security Scan - Success",
@@ -78,7 +78,7 @@ pipeline {
                 }
                 failure {
                     echo "Security Scan - Failure"
-                    emailtext (
+                    emailext (
                         attachLog: true,
                         to: "ts0929sylvia@gmail.com",
                         subject: "Security Scan - Failure",
