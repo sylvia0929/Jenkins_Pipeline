@@ -29,13 +29,13 @@ pipeline {
                     echo "Unit and Integration Tests - Success"
                     mail to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Success",
-                        body: "Unit and Integration Tests completed successfully.",
+                        body: "Unit and Integration Tests completed successfully."
                 }
                 failure {
                     echo "Unit and Integration Tests - Failure"
                     mail to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Failure",
-                        body: "Unit and Integration Tests failed.",
+                        body: "Unit and Integration Tests failed."
                 }
             }
         }
