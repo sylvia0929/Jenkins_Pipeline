@@ -27,15 +27,23 @@ pipeline {
             post {
                 success {
                     echo "Unit and Integration Tests - Success"
-                    mail to: "ts0929sylvia@gmail.com",
+                    emailtext (
+                        attachLog: true,
+                        to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Success",
-                        body: "Unit and Integration Tests completed successfully."
+                        body: "Unit and Integration Tests completed successfully.",
+                        attachmentsPattern: '**/log'
+                    )
                 }
                 failure {
                     echo "Unit and Integration Tests - Failure"
-                    mail to: "ts0929sylvia@gmail.com",
+                    emailtext (
+                        attachLog: true,
+                        to: "ts0929sylvia@gmail.com",
                         subject: "Unit and Integration Tests - Failure",
-                        body: "Unit and Integration Tests failed."
+                        body: "Unit and Integration Tests failed.",
+                        attachmentsPattern: '**/log'
+                    )
                 }
             }
         }
@@ -60,15 +68,23 @@ pipeline {
             post {
                 success {
                     echo "Security Scan - Success"
-                    mail to: "ts0929sylvia@gmail.com",
-                    subject: "Security Scan - Success",
-                    body: "Security Scan succeeded. No vulnerabilities found."
+                    emailtext (
+                        attachLog: true,
+                        to: "ts0929sylvia@gmail.com",
+                        subject: "Security Scan - Success",
+                        body: "Security Scan succeeded. No vulnerabilities found.",
+                        attachmentsPattern: '**/log'
+                    )
                 }
                 failure {
                     echo "Security Scan - Failure"
-                    mail to: "ts0929sylvia@gmail.com",
-                    subject: "Security Scan - Failure",
-                    body: "Security Scan failed. Vulnerabilities detected."
+                    emailtext (
+                        attachLog: true,
+                        to: "ts0929sylvia@gmail.com",
+                        subject: "Security Scan - Failure",
+                        body: "Security Scan failed. Vulnerabilities detected.",
+                        attachmentsPattern: '**/log'
+                    )
                 }
             }
         }
