@@ -1,6 +1,9 @@
 pipeline {
     agent any
-    
+    triggers {
+        githubPush() 
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -26,13 +29,13 @@ pipeline {
                     echo "Unit and Integration Tests - Success"
                     mail to: "ts0929sylvia@gmail.com",
                             subject: "Unit and Integration Tests - Success",
-                            body: "Unit and Integration Tests completed successfully."
+                            body: "Unit and Integration Tests completed successfully. \n\n${currentBuild.rawBuild.getLog(1000)}"
                 }
                 failure {
                     echo "Unit and Integration Tests - Failure"
                     mail to: "ts0929sylvia@gmail.com",
-                            subject: "Unit and Integration Tests - Failure",
-                            body: "Unit and Integration Tests failed."
+                            subject: "Unit and Integration Tests - Failure.",
+                            body: "Unit and Integration Tests failed. \n\n${currentBuild.rawBuild.getLog(1000)}"
                 }
             }
         }
@@ -59,13 +62,13 @@ pipeline {
                     echo "Security Scan - Success"
                     mail to: "ts0929sylvia@gmail.com",
                             subject: "Security Scan - Success",
-                            body: "Security Scan succeeded. No vulnerabilities found."
+                            body: "Security Scan succeeded. No vulnerabilities found. \n\n${currentBuild.rawBuild.getLog(1000)}"
                 }
                 failure {
                     echo "Security Scan - Failure"
                     mail to: "ts0929sylvia@gmail.com",
                             subject: "Security Scan - Failure",
-                            body: "Security Scan failed. Vulnerabilities detected."
+                            body: "Security Scan failed. Vulnerabilities detected. \n\n${currentBuild.rawBuild.getLog(1000)}"
                 }
             }
         }
