@@ -29,7 +29,7 @@ pipeline {
                     emailext (
                         attachLog: true,
                         to: "ts0929sylvia@gmail.com",
-                        subject: ""Unit and Integration Tests - Success",
+                        subject: "Unit and Integration Tests - Success",
                         body: "Unit and Integration Tests completed successfully.",
                         attachmentsPattern: '**/log'
                     )
