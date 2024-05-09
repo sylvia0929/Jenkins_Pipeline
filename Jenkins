@@ -29,7 +29,7 @@ pipeline {
                     emailext (
                         attachLog: true,
                         to: "ts0929sylvia@gmail.com",
-                        subject: "$(jobName) - Build ${buildNumber} - ${pipelineStatus.toUpperCase()}",
+                        subject: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} - ${env.PIPELINE_STATUS.toUpperCase()}",
                         body: "Unit and Integration Tests completed successfully.",
                         attachmentsPattern: '**/log'
                     )
