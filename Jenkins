@@ -108,10 +108,5 @@ pipeline {
                 // Additional deployment steps...
             }
         }
-        stage('Complete') {
-            steps {
-                echo 'Complete'
-            }
-        }
     }
 }
