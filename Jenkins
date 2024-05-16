@@ -106,7 +106,6 @@ pipeline {
                 // (Example: Running Ansible playbook for production deployment)
                 // sh 'ansible-playbook deploy-production.yml'
                 // Additional deployment steps...
-                // complete
             }
         }
     }
